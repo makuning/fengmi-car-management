@@ -8,7 +8,7 @@
     </settings>
 
     <typeAliases>
-        <package name="com.qianfeng.domain"/>
+        <package name="cn.insectmk.domain"/>
     </typeAliases>
 
     <plugins>

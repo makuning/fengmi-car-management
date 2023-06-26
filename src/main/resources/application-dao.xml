@@ -58,7 +58,7 @@
     <!--扫描mapper接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--注入mapper接口所在的包-->
-        <property name="basePackage" value="com.qianfeng.bus.mapper,com.qianfeng.sys.mapper,com.qianfeng.stat.mapper">
+        <property name="basePackage" value="cn.insectmk.bus.mapper,cn.insectmk.sys.mapper,cn.insectmk.stat.mapper">
         </property>
     </bean>
 </beans>
