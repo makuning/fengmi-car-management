@@ -25,6 +25,24 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerMapper customerMapper;
 
     /**
+     * 删除一个客户
+     * @param identity
+     */
+    @Override
+    public void deleteCustomer(String identity) {
+        this.customerMapper.deleteByPrimaryKey(identity);
+    }
+
+    /**
+     * 添加一个客户
+     * @param customerVo
+     */
+    @Override
+    public void addCustomer(CustomerVo customerVo) {
+        this.customerMapper.insertSelective(customerVo);
+    }
+
+    /**
      * 查询所有客户信息 分页
      * @param customerVo
      * @return

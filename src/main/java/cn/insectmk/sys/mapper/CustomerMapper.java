@@ -11,6 +11,9 @@ import java.util.List;
  * @Version 1.0
  */
 public interface CustomerMapper {
+    int deleteByPrimaryKey(String identity);
+
+    int insertSelective(Customer record);
 
     /**
      * 查询

@@ -12,9 +12,21 @@ import cn.insectmk.sys.domain.DataGridView;
 public interface CustomerService {
 
     /**
+     * 删除客户
+     * @param identity
+     */
+    public void deleteCustomer(String identity);
+
+    /**
      * 查询所有客户
      * @param customerVo
      * @return
      */
     public DataGridView queryAllCustomer(CustomerVo customerVo);
+
+    /**
+     * 添加客户
+     * @param customerVo
+     */
+    public void addCustomer(CustomerVo customerVo);
 }

@@ -13,6 +13,12 @@
     <sql id="Base_Column_List">
         identity, custname, sex, address, phone, career, createtime
     </sql>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from bus_customer
+        where identity = #{identity,jdbcType=VARCHAR}
+    </delete>
+
     <select id="queryAllCustomer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
@@ -39,4 +45,54 @@
         </where>
         order by createtime desc
     </select>
+
+    <insert id="insertSelective" parameterType="cn.insectmk.bus.domain.Customer">
+        insert into bus_customer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="identity != null">
+                identity,
+            </if>
+            <if test="custname != null">
+                custname,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="career != null">
+                career,
+            </if>
+            <if test="createtime != null">
+                createtime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="identity != null">
+                #{identity,jdbcType=VARCHAR},
+            </if>
+            <if test="custname != null">
+                #{custname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="career != null">
+                #{career,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
 </mapper>
