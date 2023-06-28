@@ -11,6 +11,7 @@ import java.util.List;
  * @Version 1.0
  */
 public interface CustomerMapper {
+    int updateByPrimaryKeySelective(Customer record);
     int deleteByPrimaryKey(String identity);
 
     int insertSelective(Customer record);

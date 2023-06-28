@@ -24,6 +24,22 @@ public class CustomerController {
     private CustomerService customerService;
 
     /**
+     * 修改一个客户
+     * @param customerVo
+     * @return
+     */
+    @RequestMapping("updateCustomer")
+    public ResultObj updateCustomer(CustomerVo customerVo){
+        try{
+            this.customerService.updateCustomer(customerVo);
+            return ResultObj.UPDATE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
+
+    /**
      * 删除一个客户
      * @param customerVo
      * @return

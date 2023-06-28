@@ -25,6 +25,15 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerMapper customerMapper;
 
     /**
+     * 更新一个客户
+     * @param customerVo
+     */
+    @Override
+    public void updateCustomer(CustomerVo customerVo) {
+        this.customerMapper.updateByPrimaryKeySelective(customerVo);
+    }
+
+    /**
      * 删除一个客户
      * @param identity
      */

@@ -10,6 +10,11 @@ import cn.insectmk.sys.domain.DataGridView;
  * @Version 1.0
  */
 public interface CustomerService {
+    /**
+     * 修改客户
+     * @param customerVo
+     */
+    public void updateCustomer(CustomerVo customerVo);
 
     /**
      * 删除客户

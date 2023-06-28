@@ -14,6 +14,31 @@
         identity, custname, sex, address, phone, career, createtime
     </sql>
 
+    <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.bus.domain.Customer">
+        update bus_customer
+        <set>
+            <if test="custname != null">
+                custname = #{custname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="career != null">
+                career = #{career,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where identity = #{identity,jdbcType=VARCHAR}
+    </update>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete from bus_customer
         where identity = #{identity,jdbcType=VARCHAR}
