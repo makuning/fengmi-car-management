@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.insectmk.sys.mapper.CustomerMapper">
+    <resultMap id="BaseResultMap" type="cn.insectmk.bus.domain.Customer">
+        <id column="identity" jdbcType="VARCHAR" property="identity" />
+        <result column="custname" jdbcType="VARCHAR" property="custname" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="career" jdbcType="VARCHAR" property="career" />
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        identity, custname, sex, address, phone, career, createtime
+    </sql>
+    <select id="queryAllCustomer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from bus_customer
+        <where>
+            <if test="identity!=null and identity!=''">
+                and identity LIKE concat("%",#{identity},"%")
+            </if>
+            <if test="custname!=null and custname!=''">
+                and custname LIKE concat("%",#{custname},"%")
+            </if>
+            <if test="phone!=null and phone!=''">
+                and phone LIKE concat("%",#{phone},"%")
+            </if>
+            <if test="career!=null and career!=''">
+                and career LIKE concat("%",#{career},"%")
+            </if>
+            <if test="address!=null and address!=''">
+                and address LIKE concat("%",#{address},"%")
+            </if>
+            <if test="sex!=null">
+                and sex=#{sex}
+            </if>
+        </where>
+        order by createtime desc
+    </select>
+</mapper>

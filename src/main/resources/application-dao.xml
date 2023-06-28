@@ -61,4 +61,5 @@
         <property name="basePackage" value="cn.insectmk.bus.mapper,cn.insectmk.sys.mapper,cn.insectmk.stat.mapper">
         </property>
     </bean>
+
 </beans>
