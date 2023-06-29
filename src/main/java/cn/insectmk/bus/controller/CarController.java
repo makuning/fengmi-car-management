@@ -22,9 +22,25 @@ import java.util.Date;
 @RestController
 @RequestMapping("car")
 public class CarController {
-
     @Autowired
     private CarService carService;
+
+
+    /**
+     * 批量删除车辆
+     * @param carVo
+     * @return
+     */
+    @RequestMapping("deleteBatchCar")
+    public ResultObj deleteBatchCar(CarVo carVo){
+        try{
+            this.carService.deleteBatchCar(carVo.getIds());
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
 
     /**
      * 修改车辆

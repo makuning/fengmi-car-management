@@ -12,6 +12,12 @@ import cn.insectmk.sys.domain.DataGridView;
  */
 public interface CarService {
     /**
+     * 批量删除车辆
+     * @param carnumbers
+     */
+    public void deleteBatchCar(String[] carnumbers);
+
+    /**
      * 根据车牌号查询
      * @param carnumber
      * @return

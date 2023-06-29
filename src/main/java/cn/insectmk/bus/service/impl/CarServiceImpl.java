@@ -21,6 +21,17 @@ import java.util.List;
  */
 @Service
 public class CarServiceImpl implements CarService {
+    /**
+     * 批量删除车辆
+     * @param carnumbers
+     */
+    @Override
+    public void deleteBatchCar(String[] carnumbers) {
+        for (String carnumber : carnumbers) {
+            this.deleteCar(carnumber);
+        }
+    }
+
     @Override
     public Car queryCarByCarNumber(String carnumber) {
         return this.carMapper.selectByPrimaryKey(carnumber);
