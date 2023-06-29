@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("bus")
 public class BusController {
     /**
+     * 跳转到车辆管理
+     * @return
+     */
+    @RequestMapping("toCarManager")
+    public String toCarManager(){
+        return "business/car/carManager";
+    }
+
+    /**
      * 跳转到客户管理
      * @return
      */
