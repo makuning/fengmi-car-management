@@ -12,6 +12,7 @@ import java.util.List;
  * @Version 1.0
  */
 public interface CarMapper {
+    int updateByPrimaryKeySelective(Car record);
     Car selectByPrimaryKey(String carnumber);
 
     int deleteByPrimaryKey(String carnumber);

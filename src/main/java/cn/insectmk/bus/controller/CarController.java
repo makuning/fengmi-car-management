@@ -1,5 +1,6 @@
 package cn.insectmk.bus.controller;
 
+import cn.insectmk.bus.domain.Car;
 import cn.insectmk.bus.domain.CarVo;
 import cn.insectmk.bus.service.CarService;
 import cn.insectmk.sys.domain.DataGridView;
@@ -24,6 +25,31 @@ public class CarController {
 
     @Autowired
     private CarService carService;
+
+    /**
+     * 修改车辆
+     * @param carVo
+     * @return
+     */
+    @RequestMapping("updateCar")
+    public ResultObj updateCar(CarVo carVo){
+        try{
+            String carimg = carVo.getCarimg();
+            if (carimg.endsWith(SysConstant.FILE_UPLOAD_TEMP)) {
+                String filePath =AppFileUtils.updateFileName(carVo.getCarimg(), SysConstant.FILE_UPLOAD_TEMP);
+                carVo.setCarimg(filePath);
+                //把原来的删除
+                Car car = this.carService.queryCarByCarNumber(carVo.getCarnumber());
+                AppFileUtils.removeFileByPath(car.getCarimg());
+
+            }
+            this.carService.updateCar(carVo);
+            return ResultObj.UPDATE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
 
     /**
      * 删除一个车辆

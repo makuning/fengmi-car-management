@@ -1,5 +1,6 @@
 package cn.insectmk.bus.service;
 
+import cn.insectmk.bus.domain.Car;
 import cn.insectmk.bus.domain.CarVo;
 import cn.insectmk.sys.domain.DataGridView;
 
@@ -10,6 +11,18 @@ import cn.insectmk.sys.domain.DataGridView;
  * @Version 1.0
  */
 public interface CarService {
+    /**
+     * 根据车牌号查询
+     * @param carnumber
+     * @return
+     */
+    Car queryCarByCarNumber(String carnumber);
+
+    /**
+     * 修改车辆
+     * @param carVo
+     */
+    public void updateCar(CarVo carVo);
 
     /**
      * 根据id删除车辆

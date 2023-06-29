@@ -21,6 +21,20 @@ import java.util.List;
  */
 @Service
 public class CarServiceImpl implements CarService {
+    @Override
+    public Car queryCarByCarNumber(String carnumber) {
+        return this.carMapper.selectByPrimaryKey(carnumber);
+    }
+
+    /**
+     * 更新一个车辆
+     * @param carVo
+     */
+    @Override
+    public void updateCar(CarVo carVo) {
+        this.carMapper.updateByPrimaryKeySelective(carVo);
+    }
+
     /**
      * 删除一个车辆
      * @param carnumber
