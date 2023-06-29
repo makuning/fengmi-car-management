@@ -26,6 +26,22 @@ public class CarController {
     private CarService carService;
 
     /**
+     * 删除一个车辆
+     * @param carVo
+     * @return
+     */
+    @RequestMapping("deleteCar")
+    public ResultObj deleteCar(CarVo carVo){
+        try {
+            this.carService.deleteCar(carVo.getCarnumber());
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 添加一个车辆
      * @param carVo
      * @return

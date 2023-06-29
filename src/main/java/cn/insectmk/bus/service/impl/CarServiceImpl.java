@@ -5,6 +5,8 @@ import cn.insectmk.bus.domain.CarVo;
 import cn.insectmk.bus.mapper.CarMapper;
 import cn.insectmk.bus.service.CarService;
 import cn.insectmk.sys.domain.DataGridView;
+import cn.insectmk.sys.utils.AppFileUtils;
+import cn.insectmk.sys.utils.SysConstant;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,21 @@ import java.util.List;
  */
 @Service
 public class CarServiceImpl implements CarService {
+    /**
+     * 删除一个车辆
+     * @param carnumber
+     */
+    @Override
+    public void deleteCar(String carnumber) {
+        //先删除图片
+        Car car = this.carMapper.selectByPrimaryKey(carnumber);
+        //如果不是默认图片就删除
+        if (!car.getCarimg().equals(SysConstant.DEFAULT_CAR_IMG)){
+            AppFileUtils.deleteFileUsePath(car.getCarimg());
+        }
+        //删除数据库的数据
+        this.carMapper.deleteByPrimaryKey(carnumber);
+    }
     /**
      * 添加一个车辆
      * @param carVo

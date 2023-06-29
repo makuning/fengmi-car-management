@@ -23,6 +23,19 @@
     createtime
     </sql>
 
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from bus_car
+        where carnumber = #{carnumber,jdbcType=VARCHAR}
+    </delete>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from bus_car
+        where carnumber = #{carnumber,jdbcType=VARCHAR}
+    </select>
+
     <insert id="insertSelective"
             parameterType="cn.insectmk.bus.domain.Car">
         insert into bus_car
