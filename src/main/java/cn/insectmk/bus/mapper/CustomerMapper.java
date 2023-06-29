@@ -1,4 +1,4 @@
-package cn.insectmk.sys.mapper;
+package cn.insectmk.bus.mapper;
 
 import cn.insectmk.bus.domain.Customer;
 

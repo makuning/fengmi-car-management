@@ -1,10 +1,10 @@
-package cn.insectmk.sys.service.impl;
+package cn.insectmk.bus.service.impl;
 
 import cn.insectmk.bus.domain.Customer;
 import cn.insectmk.bus.domain.CustomerVo;
 import cn.insectmk.sys.domain.DataGridView;
-import cn.insectmk.sys.mapper.CustomerMapper;
-import cn.insectmk.sys.service.CustomerService;
+import cn.insectmk.bus.mapper.CustomerMapper;
+import cn.insectmk.bus.service.CustomerService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,20 @@ import java.util.List;
  */
 @Service
 public class CustomerServiceImpl implements CustomerService {
-
     @Autowired
     private CustomerMapper customerMapper;
+
+    /**
+     * 批量删除客户
+     * @param identitys
+     */
+    @Override
+    public void deleteBatchCustomer(String[] identitys) {
+        for (String identity : identitys) {
+            this.deleteCustomer(identity);
+        }
+
+    }
 
     /**
      * 更新一个客户

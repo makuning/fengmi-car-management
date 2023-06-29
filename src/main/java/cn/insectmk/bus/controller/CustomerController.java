@@ -1,8 +1,8 @@
-package cn.insectmk.sys.controller;
+package cn.insectmk.bus.controller;
 
 import cn.insectmk.bus.domain.CustomerVo;
 import cn.insectmk.sys.domain.DataGridView;
-import cn.insectmk.sys.service.CustomerService;
+import cn.insectmk.bus.service.CustomerService;
 import cn.insectmk.sys.utils.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +22,22 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    /**
+     * 批量删除客户
+     * @param customerVo
+     * @return
+     */
+    @RequestMapping("batchDeleteCustomer")
+    public ResultObj deleteBatchCustomer(CustomerVo customerVo){
+        try{
+            this.customerService.deleteBatchCustomer(customerVo.getIds());
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
 
     /**
      * 修改一个客户

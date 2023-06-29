@@ -1,4 +1,4 @@
-package cn.insectmk.sys.service;
+package cn.insectmk.bus.service;
 
 import cn.insectmk.bus.domain.CustomerVo;
 import cn.insectmk.sys.domain.DataGridView;
@@ -10,6 +10,12 @@ import cn.insectmk.sys.domain.DataGridView;
  * @Version 1.0
  */
 public interface CustomerService {
+    /**
+     * 批量删除客户
+     * @param identitys
+     */
+    public void deleteBatchCustomer(String[] identitys);
+
     /**
      * 修改客户
      * @param customerVo
