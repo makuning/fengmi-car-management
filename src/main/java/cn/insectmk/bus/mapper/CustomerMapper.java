@@ -13,9 +13,7 @@ import java.util.List;
 public interface CustomerMapper {
     int updateByPrimaryKeySelective(Customer record);
     int deleteByPrimaryKey(String identity);
-
     int insertSelective(Customer record);
-
     /**
      * 查询
      * @param customer

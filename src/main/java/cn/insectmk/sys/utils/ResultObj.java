@@ -1,15 +1,22 @@
 package cn.insectmk.sys.utils;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @Description 服务器返回对象
  * @Author makun
  * @Date 2023/6/26 18:37
  * @Version 1.0
  */
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResultObj {
     private Integer code;
     private String msg;
-
 
     /**
      * 添加成功
@@ -55,35 +62,11 @@ public class ResultObj {
     /**
      * 状态码0 成功
      */
-    public static final ResultObj STATUS_TRUE = new ResultObj(SysConstant.CODE_SUCCESS);
+    public static final ResultObj STATUS_TRUE = new ResultObj(SysConstant.CODE_SUCCESS, "成功");
 
     /**
      * 状态码-1 失败
      */
-    public static final ResultObj STATUS_FALSE = new ResultObj(SysConstant.CODE_ERROR);
+    public static final ResultObj STATUS_FALSE = new ResultObj(SysConstant.CODE_ERROR, "失败");
 
-    private ResultObj(Integer code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
-
-    private ResultObj(Integer code) {
-        this.code = code;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 }

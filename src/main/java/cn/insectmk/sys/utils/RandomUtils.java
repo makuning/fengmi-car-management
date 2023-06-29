@@ -13,7 +13,6 @@ import java.util.UUID;
  */
 
 public class RandomUtils {
-
     private static SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat sdf2=new SimpleDateFormat("yyyyMMddHHmmssSSS");
     private static SimpleDateFormat sdf3=new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");

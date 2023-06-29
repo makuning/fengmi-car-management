@@ -19,7 +19,6 @@ import java.util.Date;
 @RestController  //以json形式响应数据
 @RequestMapping("customer")
 public class CustomerController {
-
     @Autowired
     private CustomerService customerService;
 

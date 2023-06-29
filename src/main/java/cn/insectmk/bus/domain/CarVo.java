@@ -1,11 +1,19 @@
 package cn.insectmk.bus.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @Description 车辆视图对象
  * @Author makun
  * @Date 2023/6/29 14:57
  * @Version 1.0
  */
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CarVo extends Car {
 
     /**
@@ -16,29 +24,5 @@ public class CarVo extends Car {
 
     //接受多个id
     private String [] ids;
-
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-
-    public Integer getLimit() {
-        return limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
-
-    public String[] getIds() {
-        return ids;
-    }
-
-    public void setIds(String[] ids) {
-        this.ids = ids;
-    }
 }
 

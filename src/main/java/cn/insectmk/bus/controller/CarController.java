@@ -25,7 +25,6 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-
     /**
      * 批量删除车辆
      * @param carVo

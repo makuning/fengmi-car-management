@@ -14,9 +14,7 @@ import java.util.List;
 public interface CarMapper {
     int updateByPrimaryKeySelective(Car record);
     Car selectByPrimaryKey(String carnumber);
-
     int deleteByPrimaryKey(String carnumber);
     int insertSelective(Car record);
-
     List<Car> queryAllCar(CarVo carVo);
 }
