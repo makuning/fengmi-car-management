@@ -14,6 +14,14 @@
         identity, custname, sex, address, phone, career, createtime
     </sql>
 
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from bus_customer
+        where identity = #{identity,jdbcType=VARCHAR}
+    </select>
+
     <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.bus.domain.Customer">
         update bus_customer
         <set>

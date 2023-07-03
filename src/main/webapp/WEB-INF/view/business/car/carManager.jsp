@@ -214,20 +214,21 @@
             page: true , //启动分页
             cols:[[  //列表数据
                 {type:'checkbox',fixed:"left"},
-                {field:'carnumber',title:'车牌号',align:'center',with:'90'},
-                {field:'cartype',title:'车辆类型',align:'center',with:'90'},
-                {field:'color',title:'车辆颜色',align:'center',with:'90'},
-                {field:'price',title:'车辆价格',align:'center',with:'90'},
-                {field:'rentprice',title:'出租价格',align:'center',with:'90'},
-                {field:'deposit',title:'出租押金',align:'center',with:'90',templet: function (d) {
+                {field:'carnumber',title:'车牌号',align:'center',width:'100'},
+                {field:'cartype',title:'车辆类型',align:'center',width:'90'},
+                {field:'color',title:'车辆颜色',align:'center',width:'90'},
+                {field:'price',title:'车辆价格',align:'center',width:'90'},
+                {field:'rentprice',title:'出租价格',align:'center',width:'90'},
+                {field:'deposit',title:'出租押金',align:'center',width:'90'},
+                {field:'isrenting',title:'是否出租',align:'center',width:'90',templet: function (d) {
                     return d.isrenting == '1'? '<font color=blue>已出租</font>' : '<font color=red>未出租</font>'
                     }},
-                {field:'description',title:'车辆描述',align:'center',with:'150'},
-                {field:'carimg',title:'缩略图',align:'center',with:'80',templet:function (d) {
+                {field:'description',title:'车辆描述',align:'center',width:'150'},
+                {field:'carimg',title:'缩略图',align:'center',width:'90',templet:function (d) {
                     return "<img width=40 height=40 src=${pageContext.request.contextPath}/file/downloadShowFile.action?path="+d.carimg+"/>"
                     }},
-                {field:'createtime',title:'录入时间',align:'center',with:'160'},
-                {fixd:'right',title:'操作',toolbar:'#carBar' ,align:'center',with:'240'}
+                {field:'createtime',title:'录入时间',align:'center',width:'200'},
+                {fixd:'right',title:'操作',toolbar:'#carBar' ,align:'center',width:'250'}
             ]],
             done:function (data , curr ,count) {
                 //如果不是第一页,当前返回数据为0,我们就让返回上一页

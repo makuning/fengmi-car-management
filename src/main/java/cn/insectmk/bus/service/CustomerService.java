@@ -1,5 +1,6 @@
 package cn.insectmk.bus.service;
 
+import cn.insectmk.bus.domain.Customer;
 import cn.insectmk.bus.domain.CustomerVo;
 import cn.insectmk.sys.domain.DataGridView;
 
@@ -10,6 +11,13 @@ import cn.insectmk.sys.domain.DataGridView;
  * @Version 1.0
  */
 public interface CustomerService {
+    /**
+     * 根据身份号查询客户信息
+     * @param identity
+     * @return
+     */
+    Customer queryCustomerByIdentity(String identity);
+
     /**
      * 批量删除客户
      * @param identitys
