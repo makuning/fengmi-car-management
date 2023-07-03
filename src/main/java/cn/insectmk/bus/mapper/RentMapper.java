@@ -11,6 +11,7 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RentMapper {
+    int updateByPrimaryKeySelective(Rent record);
     /**
      * @return 查询
      */

@@ -29,6 +29,11 @@ public class RentServiceImpl implements RentService {
     private CarMapper carMapper;
 
     @Override
+    public void updateRent(RentVo rentVo) {
+        this.rentMapper.updateByPrimaryKeySelective(rentVo);
+    }
+
+    @Override
     public DataGridView queryAllRent(RentVo rentVo) {
         Page<Object> page = PageHelper.startPage(rentVo.getPage(),rentVo.getLimit());
         List<Rent> data = this.rentMapper.queryAllRent(rentVo);

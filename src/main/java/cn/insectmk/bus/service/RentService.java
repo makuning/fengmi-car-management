@@ -11,6 +11,12 @@ import cn.insectmk.sys.domain.DataGridView;
  */
 public interface RentService {
     /**
+     * 修改出租单
+     * @param rentVo
+     */
+    void updateRent(RentVo rentVo);
+
+    /**
      * 查询
      * @param rentVo
      */

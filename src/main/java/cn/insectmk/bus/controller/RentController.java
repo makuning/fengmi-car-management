@@ -30,6 +30,23 @@ public class RentController {
     private CustomerService customerService;
 
     /**
+     * 修改出租单信息
+     * @param rentVo
+     * @return
+     */
+    @RequestMapping("updateRent")
+    public ResultObj updateRent(RentVo rentVo){
+        try {
+            //修改
+            this.rentService.updateRent(rentVo);
+            return ResultObj.UPDATE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
+
+    /**
      * 查询
      */
     @RequestMapping("loadAllRent")
