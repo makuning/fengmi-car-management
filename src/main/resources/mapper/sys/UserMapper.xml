@@ -20,6 +20,80 @@
     available
     </sql>
 
+    <insert id="insertSelective" parameterType="cn.insectmk.sys.domain.User">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="loginname != null">
+                loginname,
+            </if>
+            <if test="identity != null">
+                identity,
+            </if>
+            <if test="realname != null">
+                realname,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="pwd != null">
+                pwd,
+            </if>
+            <if test="position != null">
+                position,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="available != null">
+                available,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="loginname != null">
+                #{loginname,jdbcType=VARCHAR},
+            </if>
+            <if test="identity != null">
+                #{identity,jdbcType=VARCHAR},
+            </if>
+            <if test="realname != null">
+                #{realname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null">
+                #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="available != null">
+                #{available,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
     <!-- 用户查询 -->
     <select id="queryAllUser"  resultMap="BaseResultMap">
         select

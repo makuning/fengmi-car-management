@@ -11,6 +11,8 @@ import java.util.List;
  * @Version 1.0
  */
 public interface UserMapper {
+    int insertSelective(User record);
+
     List<User> queryAllUser(User user);
     /*
      *登录

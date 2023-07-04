@@ -3,6 +3,7 @@ package cn.insectmk.sys.controller;
 import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.domain.UserVo;
 import cn.insectmk.sys.service.UserService;
+import cn.insectmk.sys.utils.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    /**
+     * 添加用户
+     * @param userVo
+     * @return
+     */
+    @RequestMapping("addUser")
+    public ResultObj addUser(UserVo userVo){
+        try {
+            this.userService.addUser(userVo);
+            return ResultObj.ADD_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.ADD_ERROR;
+        }
+    }
 
     /**
      * 加载用户列表返回DataGridView

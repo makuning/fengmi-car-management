@@ -5,6 +5,7 @@ import cn.insectmk.sys.domain.User;
 import cn.insectmk.sys.domain.UserVo;
 import cn.insectmk.sys.mapper.UserMapper;
 import cn.insectmk.sys.service.UserService;
+import cn.insectmk.sys.utils.SysConstant;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,19 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
+    /**
+     * 添加用户
+     * @param userVo
+     */
+    @Override
+    public void addUser(UserVo userVo) {
+        //设置默认密码
+        userVo.setPwd(DigestUtils.md5DigestAsHex(SysConstant.USER_DEFAULT_PWD.getBytes()));
+        //设置用户类型都是普通用户type=2
+        userVo.setType(SysConstant.USER_TYPE_NORMAL);
+        this.userMapper.insertSelective(userVo);
+    }
 
     /**
      * 查询所有用户
