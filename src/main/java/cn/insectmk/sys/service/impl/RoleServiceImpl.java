@@ -27,6 +27,18 @@ public class RoleServiceImpl implements RoleService {
     private MenuMapper menuMapper;
 
     @Override
+    public void saveRoleMenu(RoleVo roleVo) {
+        Integer rid=roleVo.getRoleid();
+        Integer [] mids=roleVo.getIds();
+        //根据rid删除sys_role_menu里面的所有数据
+        this.roleMapper.deleteRoleMenuByRid(rid);
+        //保存角色和菜单的关系
+        for (Integer mid : mids) {
+            this.roleMapper.insertRoleMenu(rid,mid);
+        }
+    }
+
+    @Override
     public DataGridView initRoleMenuTreeJson(Integer roleid) {
         //查询所有的可用的菜单
         Menu menu = new Menu();

@@ -27,6 +27,22 @@ public class RoleController {
     private RoleService roleService;
 
     /**
+     * 保存角色和菜单的关系
+     */
+    @RequestMapping("saveRoleMenu")
+    public ResultObj saveRoleMenu(RoleVo roleVo) {
+        try {
+
+            this.roleService.saveRoleMenu(roleVo);
+            return ResultObj.DISPATCH_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DISPATCH_ERROR;
+
+        }
+    }
+
+    /**
      * 加载角色管理分配菜单的json
      */
     @RequestMapping("initRoleMenuTreeJson")

@@ -11,6 +11,12 @@ import cn.insectmk.sys.domain.RoleVo;
  */
 public interface RoleService {
     /**
+     * 保存角色和菜单的关系
+     * @param roleVo
+     */
+    void saveRoleMenu(RoleVo roleVo);
+
+    /**
      * 加载角色管理分配菜单的json
      * @param roleid
      * @return

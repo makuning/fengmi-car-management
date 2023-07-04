@@ -12,6 +12,11 @@
         roleid, rolename, roledesc, available
     </sql>
 
+    <!--  保存角色和菜单的关系  -->
+    <insert id="insertRoleMenu">
+        insert into sys_role_menu(rid,mid) values(#{rid},#{mid})
+    </insert>
+
     <!--根据角色id删除sys_role_menu里面的数据 deleteRoleMenuByRid-->
     <delete id="deleteRoleMenuByRid">
         delete from sys_role_menu where rid=#{value}

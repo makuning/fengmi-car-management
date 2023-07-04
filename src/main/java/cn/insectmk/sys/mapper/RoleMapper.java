@@ -13,6 +13,12 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RoleMapper {
+    /**
+     * 保存角色和菜单的关系sys_role_menu
+     * @param rid
+     * @param mid
+     */
+    void insertRoleMenu(@Param("rid") Integer rid, @Param("mid") Integer mid);
 
     int deleteByPrimaryKey(Integer roleid);
 
