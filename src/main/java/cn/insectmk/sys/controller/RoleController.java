@@ -27,6 +27,22 @@ public class RoleController {
     private RoleService roleService;
 
     /**
+     * 批量删除角色
+     * @param roleVo
+     * @return
+     */
+    @RequestMapping("deleteBatchRole")
+    public ResultObj deleteBatchRole(RoleVo roleVo) {
+        try {
+            this.roleService.deleteBatchRole(roleVo.getIds());
+            return ResultObj.DELETE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 删除角色
      */
     @RequestMapping("deleteRole")

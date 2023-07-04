@@ -11,6 +11,12 @@ import cn.insectmk.sys.domain.RoleVo;
  */
 public interface RoleService {
     /**
+     * 批量删除角色
+     * @param ids
+     */
+    void deleteBatchRole(Integer[] ids);
+
+    /**
      * 根据id删除角色
      * @param roleid
      */

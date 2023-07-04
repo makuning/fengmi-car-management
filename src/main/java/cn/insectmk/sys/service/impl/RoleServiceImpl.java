@@ -23,6 +23,17 @@ public class RoleServiceImpl implements RoleService {
     private RoleMapper roleMapper;
 
     /**
+     * 根据前台页面传来的数组批量删除角色
+     * @param ids
+     */
+    @Override
+    public void deleteBatchRole(Integer[] ids) {
+        for (Integer rid : ids){
+            deleteRole(rid);
+        }
+    }
+
+    /**
      * 根据角色roleid单个删除角色
      * @param roleid
      */
