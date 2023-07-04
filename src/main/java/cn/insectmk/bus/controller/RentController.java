@@ -34,16 +34,6 @@ public class RentController {
     private CheckService checkService;
 
     /**
-     * 根据出租单号加载检查单的表单数据
-     * @param rentid
-     * @return
-     */
-    @RequestMapping("initCheckFormData")
-    public Map<String,Object> initCheckFormData(String rentid){
-        return this.checkService.initCheckFormData(rentid);
-    }
-
-    /**
      * 删除出租单信息
      * @param rentVo
      * @return

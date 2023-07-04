@@ -1,10 +1,13 @@
 package cn.insectmk.bus.controller;
 
 import cn.insectmk.bus.domain.Rent;
+import cn.insectmk.bus.service.CheckService;
 import cn.insectmk.bus.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @Description 入库管理
@@ -15,10 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("check")
 public class CheckController {
-
     @Autowired
     private RentService rentService;
+    @Autowired
+    private CheckService checkService;
 
+    /**
+     * 根据出租单号加载检查单的表单数据
+     * @param rentid
+     * @return
+     */
+    @RequestMapping("initCheckFormData")
+    public Map<String,Object> initCheckFormData(String rentid){
+        return this.checkService.initCheckFormData(rentid);
+    }
 
     @RequestMapping("checkRentExist")
     public Rent checkRentExist(String rentid){
