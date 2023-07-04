@@ -11,6 +11,8 @@ import java.util.List;
  * @Version 1.0
  */
 public interface UserMapper {
+    int deleteByPrimaryKey(Integer userid);
+
     int updateByPrimaryKeySelective(User record);
 
     int insertSelective(User record);

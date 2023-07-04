@@ -12,6 +12,12 @@ import cn.insectmk.sys.domain.UserVo;
  */
 public interface UserService {
     /**
+     * 根据id删除用户
+     * @param userid
+     */
+    void deleteUser(Integer userid);
+
+    /**
      * 修改用户
      * @param userVo
      */

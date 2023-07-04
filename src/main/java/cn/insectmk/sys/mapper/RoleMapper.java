@@ -14,6 +14,12 @@ import java.util.List;
  */
 public interface RoleMapper {
     /**
+     * 根据用户id删除sys_role_user里面的数据
+     * @param userid
+     */
+    void deleteRoleUserByUid(Integer userid);
+
+    /**
      * 保存角色和菜单的关系sys_role_menu
      * @param rid
      * @param mid

@@ -21,6 +21,22 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 删除用户
+     * @param userid
+     * @return
+     */
+    @RequestMapping("deleteUser")
+    public ResultObj deleteUser(int userid){
+        try {
+            this.userService.deleteUser(userid);
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 修改用户
      * @param userVo
      * @return

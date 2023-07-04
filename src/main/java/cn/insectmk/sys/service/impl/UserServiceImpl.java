@@ -3,6 +3,7 @@ package cn.insectmk.sys.service.impl;
 import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.domain.User;
 import cn.insectmk.sys.domain.UserVo;
+import cn.insectmk.sys.mapper.RoleMapper;
 import cn.insectmk.sys.mapper.UserMapper;
 import cn.insectmk.sys.service.UserService;
 import cn.insectmk.sys.utils.SysConstant;
@@ -24,6 +25,20 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private RoleMapper roleMapper;
+
+    /**
+     * 删除用户
+     * @param userid
+     */
+    @Override
+    public void deleteUser(Integer userid) {
+        //先删除用户
+        this.userMapper.deleteByPrimaryKey(userid);
+        //根据用户id删除sys_role_user
+        this.roleMapper.deleteRoleUserByUid(userid);
+    }
 
     /**
      * 修改用户
