@@ -1,5 +1,6 @@
 package cn.insectmk.sys.service;
 
+import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.domain.Menu;
 import cn.insectmk.sys.domain.MenuVo;
 import java.util.List;
@@ -11,6 +12,12 @@ import java.util.List;
  * @Version 1.0
  */
 public interface MenuService {
+    /**
+     * 查询所有菜单
+     * @param menuVo
+     * @return
+     */
+    DataGridView queryAllMenu(MenuVo menuVo);
 
     /**
      * 查询所有的菜单返回List

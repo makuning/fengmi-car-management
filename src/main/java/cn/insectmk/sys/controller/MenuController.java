@@ -24,6 +24,15 @@ public class MenuController {
     private MenuService menuService;
 
     /**
+     * 加载菜单列表返回
+     * @return
+     */
+    @RequestMapping("loadAllMenu")
+    public DataGridView loadAllMenu(MenuVo menuVo){
+        return this.menuService.queryAllMenu(menuVo);
+    }
+
+    /**
      * 加载菜单管理左边的菜单树
      * @param menuVo
      * @return
