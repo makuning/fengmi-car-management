@@ -13,6 +13,18 @@ import java.util.List;
  */
 public interface MenuService {
     /**
+     * 删除菜单
+     *
+     * @param menuVo
+     */
+    void deleteMenu(MenuVo menuVo);
+
+    /**
+     * 根据pid查询菜单的数量
+     **/
+    Integer queryMenuByPid(Integer pid);
+
+    /**
      * 修改菜单
      **/
     void updateMenu(MenuVo menuVo);

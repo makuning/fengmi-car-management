@@ -16,6 +16,16 @@
         id, pid, title, href, spread, target, icon, available
     </sql>
 
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_menu
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据pid查询菜单数量-->
+    <select id="queryMenuByPid" resultType="java.lang.Integer">
+        select count(1) from sys_menu where pid=#{pid}
+    </select>
+
     <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.sys.domain.Menu">
         update sys_menu
         <set>

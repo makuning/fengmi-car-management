@@ -2,6 +2,7 @@ package cn.insectmk.sys.mapper;
 
 import cn.insectmk.sys.domain.Menu;
 import cn.insectmk.sys.domain.MenuVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,6 +13,15 @@ import java.util.List;
  * @Version 1.0
  */
 public interface MenuMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    /**
+     * 根据pid查询菜单数量
+     * @param pid
+     * @return
+     */
+    Integer queryMenuByPid(@Param("pid") Integer pid);
+
     int updateByPrimaryKeySelective(Menu record);
 
     int insertSelective(Menu record);

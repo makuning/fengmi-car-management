@@ -25,6 +25,38 @@ public class MenuController {
     private MenuService menuService;
 
     /**
+     * 删除菜单
+     * @param menuVo
+     * @return
+     */
+    @RequestMapping("deleteMenu")
+    public ResultObj deleteMenu(MenuVo menuVo){
+        try {
+            this.menuService.deleteMenu(menuVo);
+            return ResultObj.DELETE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
+     * 根据id判断当前菜单有没有子节点
+     * 有返回code=>0
+     * @param menuVo
+     * @return
+     */
+    @RequestMapping("checkMenuHasChildren")
+    public ResultObj checkMenuHasChildren(MenuVo menuVo){
+        Integer count = menuService.queryMenuByPid(menuVo.getId());
+        if (count>0){
+            return ResultObj.STATUS_TRUE;
+        }else {
+            return ResultObj.STATUS_FALSE;
+        }
+    }
+
+    /**
      * 修改菜单
      * @param menuVo
      * @return

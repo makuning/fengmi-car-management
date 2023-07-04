@@ -23,6 +23,28 @@ public class MenuServiceImpl implements MenuService {
     private MenuMapper menuMapper;
 
     /**
+     * 删除菜单
+     * @param menuVo
+     */
+    @Override
+    public void deleteMenu(MenuVo menuVo) {
+        //删除菜单的数据
+        this.menuMapper.deleteByPrimaryKey(menuVo.getId());
+        //根据id删除sys_role_menu里面的数据 TODO
+        //this.menuMapper.deleteRoleMenuByMid(menuVo.getId());
+    }
+
+    /**
+     * 根据pid查询菜单的数量
+     * @param pid
+     * @return
+     */
+    @Override
+    public Integer queryMenuByPid(Integer pid) {
+        return this.menuMapper.queryMenuByPid(pid);
+    }
+
+    /**
      * 修改菜单
      * @param menuVo
      */
