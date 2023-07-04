@@ -2,6 +2,8 @@ package cn.insectmk.sys.mapper;
 
 import cn.insectmk.sys.domain.User;
 
+import java.util.List;
+
 /**
  * @Description dao层接口UserMapper
  * @Author makun
@@ -9,6 +11,7 @@ import cn.insectmk.sys.domain.User;
  * @Version 1.0
  */
 public interface UserMapper {
+    List<User> queryAllUser(User user);
     /*
      *登录
      * */

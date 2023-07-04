@@ -1,5 +1,6 @@
 package cn.insectmk.sys.service;
 
+import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.domain.User;
 import cn.insectmk.sys.domain.UserVo;
 
@@ -10,6 +11,13 @@ import cn.insectmk.sys.domain.UserVo;
  * @Version 1.0
  */
 public interface UserService {
+    /**
+     * 查询所有用户
+     * @param userVo
+     * @return
+     */
+    DataGridView queryAllUser(UserVo userVo);
+
     /**
      * 用户登录
      * @param userVo

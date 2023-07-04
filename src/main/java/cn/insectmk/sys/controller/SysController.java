@@ -17,6 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("sys")
 public class SysController {
     /**
+     * 跳转到用户管理页面
+     * @return
+     */
+    @RequestMapping("toUserManager")
+    public String toUserManager() {
+        return "system/user/userManager";
+    }
+
+    /**
      * 跳转到角色管理的主页面
      * @return
      */
