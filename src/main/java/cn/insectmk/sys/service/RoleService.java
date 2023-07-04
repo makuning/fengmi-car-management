@@ -11,6 +11,12 @@ import cn.insectmk.sys.domain.RoleVo;
  */
 public interface RoleService {
     /**
+     * 添加角色
+     * @param roleVo
+     */
+    void addRole(RoleVo roleVo);
+
+    /**
      * 查询所有角色
      * @param roleVo
      * @return

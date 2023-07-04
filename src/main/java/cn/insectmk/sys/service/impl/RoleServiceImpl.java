@@ -22,6 +22,15 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleMapper roleMapper;
 
+    /**
+     * 添加角色
+     * @param roleVo
+     */
+    @Override
+    public void addRole(RoleVo roleVo) {
+        this.roleMapper.insertSelective(roleVo);
+    }
+
     @Override
     public DataGridView queryAllRole(RoleVo roleVo) {
         Page<Object> page = PageHelper.startPage(roleVo.getPage(),roleVo.getLimit());

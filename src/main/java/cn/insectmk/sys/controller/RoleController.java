@@ -10,6 +10,7 @@ package cn.insectmk.sys.controller;
 import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.domain.RoleVo;
 import cn.insectmk.sys.service.RoleService;
+import cn.insectmk.sys.utils.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoleController {
     @Autowired
     private RoleService roleService;
+
+    /**
+     * 添加角色
+     * @param roleVo
+     * @return
+     */
+    @RequestMapping("addRole")
+    public ResultObj addRole(RoleVo roleVo) {
+        try {
+            this.roleService.addRole(roleVo);
+            return ResultObj.ADD_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.ADD_ERROR;
+        }
+    }
 
     /**
      * 加载角色列表返回DataGridView
