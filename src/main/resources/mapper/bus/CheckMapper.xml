@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.insectmk.bus.mapper.CheckMapper">
+    <resultMap id="BaseResultMap" type="cn.insectmk.bus.domain.Check">
+        <id column="checkid" jdbcType="VARCHAR" property="userid" />
+        <result column="checkdata" javaType="java.util.Date" property="checkdate" />
+        <result column="checkdesc" jdbcType="VARCHAR" property="checkdesc" />
+        <result column="problem" jdbcType="VARCHAR" property="problem" />
+        <result column="paymoney" jdbcType="DOUBLE" property="paymoney" />
+        <result column="opername" jdbcType="VARCHAR" property="opername" />
+        <result column="rentid" jdbcType="VARCHAR" property="rentid" />
+        <result column="createtime" javaType="java.util.Date" property="createtime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        checkid, checkdate, checkdesc, problem, paymoneh, opername, rentid, createtime
+    </sql>
+
+</mapper>

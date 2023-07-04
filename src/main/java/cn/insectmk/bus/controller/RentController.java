@@ -2,6 +2,7 @@ package cn.insectmk.bus.controller;
 
 import cn.insectmk.bus.domain.Customer;
 import cn.insectmk.bus.domain.RentVo;
+import cn.insectmk.bus.service.CheckService;
 import cn.insectmk.bus.service.CustomerService;
 import cn.insectmk.bus.service.RentService;
 import cn.insectmk.sys.domain.DataGridView;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @Description 汽车出租管理的控制器
@@ -28,6 +30,18 @@ public class RentController {
     private RentService rentService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private CheckService checkService;
+
+    /**
+     * 根据出租单号加载检查单的表单数据
+     * @param rentid
+     * @return
+     */
+    @RequestMapping("initCheckFormData")
+    public Map<String,Object> initCheckFormData(String rentid){
+        return this.checkService.initCheckFormData(rentid);
+    }
 
     /**
      * 删除出租单信息
