@@ -11,6 +11,20 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RoleMapper {
+    int deleteByPrimaryKey(Integer roleid);
+
+    /**
+     * 根据角色id删除sys_role_menu里面的数据
+     * @param roleid
+     */
+    void deleteRoleMenuByRid(Integer roleid);
+
+    /**
+     * 根据角色id删除sys_role_user里面的数据
+     * @param roleid
+     */
+    void deleteRoleUserByRid(Integer roleid);
+
     int updateByPrimaryKeySelective(Role record);
 
     int insertSelective(Role record);

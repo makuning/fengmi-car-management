@@ -23,6 +23,21 @@ public class RoleServiceImpl implements RoleService {
     private RoleMapper roleMapper;
 
     /**
+     * 根据角色roleid单个删除角色
+     * @param roleid
+     */
+    @Override
+    public void deleteRole(Integer roleid) {
+        //删除角色表的数据
+        this.roleMapper.deleteByPrimaryKey(roleid);
+        //根据角色id删除sys_role_menu里面的数据
+        //this.roleMapper.deleteRoleMenuByRid(roleid);
+        //根据角色id删除sys_role_user里面的数据 //TODO
+        //this.roleMapper.deleteRoleUserByRid(roleid);
+
+    }
+
+    /**
      * 更新角色
      * @param roleVo
      */

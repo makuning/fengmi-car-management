@@ -27,6 +27,20 @@ public class RoleController {
     private RoleService roleService;
 
     /**
+     * 删除角色
+     */
+    @RequestMapping("deleteRole")
+    public ResultObj deleteRole(RoleVo roleVo) {
+        try {
+            this.roleService.deleteRole(roleVo.getRoleid());
+            return ResultObj.DELETE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 修改角色
      */
     @RequestMapping("updateRole")

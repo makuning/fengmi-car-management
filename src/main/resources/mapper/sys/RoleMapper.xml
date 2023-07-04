@@ -12,6 +12,21 @@
         roleid, rolename, roledesc, available
     </sql>
 
+    <!--根据角色id删除sys_role_menu里面的数据 deleteRoleMenuByRid-->
+    <delete id="deleteRoleMenuByRid">
+        delete from sys_role_menu where rid=#{value}
+    </delete>
+
+    <!--根据角色id删除sys_role_user里面的数据deleteRoleUserByRid-->
+    <delete id="deleteRoleUserByRid">
+        delete from sys_role_user where rid=#{value}
+    </delete>
+
+    <!--删除角色-->
+    <delete id="deleteByPrimaryKey">
+        delete from sys_role where roleid = #{roleid}
+    </delete>
+
     <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.sys.domain.Role">
         update sys_role
         <set>
