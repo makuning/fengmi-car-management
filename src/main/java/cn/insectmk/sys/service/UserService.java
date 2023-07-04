@@ -12,6 +12,12 @@ import cn.insectmk.sys.domain.UserVo;
  */
 public interface UserService {
     /**
+     * 修改用户
+     * @param userVo
+     */
+    void updateUser(UserVo userVo);
+
+    /**
      * 添加用户
      * @param userVo
      */

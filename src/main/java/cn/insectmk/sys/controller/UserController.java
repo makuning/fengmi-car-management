@@ -21,6 +21,22 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 修改用户
+     * @param userVo
+     * @return
+     */
+    @RequestMapping("updateUser")
+    public ResultObj updateUser(UserVo userVo){
+        try {
+            this.userService.updateUser(userVo);
+            return ResultObj.UPDATE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
+
+    /**
      * 添加用户
      * @param userVo
      * @return

@@ -26,6 +26,15 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     /**
+     * 修改用户
+     * @param userVo
+     */
+    @Override
+    public void updateUser(UserVo userVo) {
+        this.userMapper.updateByPrimaryKeySelective(userVo);
+    }
+
+    /**
      * 添加用户
      * @param userVo
      */
