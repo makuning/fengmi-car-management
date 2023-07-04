@@ -1,9 +1,6 @@
 package cn.insectmk.sys.controller;
 
-import cn.insectmk.sys.domain.Menu;
-import cn.insectmk.sys.domain.MenuVo;
-import cn.insectmk.sys.domain.TreeNode;
-import cn.insectmk.sys.domain.User;
+import cn.insectmk.sys.domain.*;
 import cn.insectmk.sys.service.MenuService;
 import cn.insectmk.sys.utils.SysConstant;
 import cn.insectmk.sys.utils.TreeNodeBuilder;
@@ -25,6 +22,29 @@ import java.util.List;
 public class MenuController {
     @Autowired
     private MenuService menuService;
+
+    /**
+     * 加载菜单管理左边的菜单树
+     * @param menuVo
+     * @return
+     */
+    @RequestMapping("loadMenuManagerLeftTreeJson")
+    public DataGridView loadMenuManagerLeftTreeJson(MenuVo menuVo) {
+        menuVo.setAvailable(SysConstant.AVAILABLE_TRUE);
+        List<Menu> list = this.menuService.queryAllMenuForList(menuVo);
+        List<TreeNode> nodes = new ArrayList<>();
+        for (Menu menu : list) {
+            Integer id = menu.getId();
+            Integer pid = menu.getPid();
+            String title = menu.getTitle();
+            String icon = menu.getIcon();
+            String href = menu.getHref();
+            Boolean spread = menu.getSpread() == SysConstant.SPREAD_TRUE ? true : false;
+            String target = menu.getTarget();
+            nodes.add(new TreeNode(id, pid, title, icon, href, spread, target));
+        }
+        return new DataGridView(nodes);
+    }
 
     @RequestMapping("loadIndexLeftMenuJson")
     public List<TreeNode> loadIndexLeftMenuJson(MenuVo menuVo) {
