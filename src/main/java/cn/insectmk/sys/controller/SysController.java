@@ -17,6 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("sys")
 public class SysController {
     /**
+     * 跳转到角色管理的主页面
+     * @return
+     */
+    @RequestMapping("toRoleManager")
+    public String toRoleManager() {
+        return "system/role/roleManager";
+    }
+
+    /**
      * 跳转到菜单管理的左边的菜单树页面
      * @return
      */
