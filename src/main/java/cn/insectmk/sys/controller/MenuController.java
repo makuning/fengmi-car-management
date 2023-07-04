@@ -2,6 +2,7 @@ package cn.insectmk.sys.controller;
 
 import cn.insectmk.sys.domain.*;
 import cn.insectmk.sys.service.MenuService;
+import cn.insectmk.sys.utils.ResultObj;
 import cn.insectmk.sys.utils.SysConstant;
 import cn.insectmk.sys.utils.TreeNodeBuilder;
 import cn.insectmk.sys.utils.WebUtils;
@@ -22,6 +23,24 @@ import java.util.List;
 public class MenuController {
     @Autowired
     private MenuService menuService;
+
+    /**
+     * 添加菜单
+     * @param menuVo
+     * @return
+     */
+    @RequestMapping("addMenu")
+    public ResultObj addMenu(MenuVo menuVo){
+        try {
+            this.menuService.addMenu(menuVo);
+            //添加成功
+            return ResultObj.ADD_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            //添加失败
+            return ResultObj.ADD_ERROR;
+        }
+    }
 
     /**
      * 加载菜单列表返回

@@ -16,6 +16,62 @@
         id, pid, title, href, spread, target, icon, available
     </sql>
 
+    <insert id="insertSelective" parameterType="cn.insectmk.sys.domain.Menu">
+        insert into sys_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="pid != null">
+                pid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="href != null">
+                href,
+            </if>
+            <if test="spread != null">
+                spread,
+            </if>
+            <if test="target != null">
+                target,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="available != null">
+                available,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="pid != null">
+                #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="href != null">
+                #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="spread != null">
+                #{spread,jdbcType=INTEGER},
+            </if>
+            <if test="target != null">
+                #{target,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="available != null">
+                #{available,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
     <!--查询所有菜单-->
     <select id="queryAllMenu" resultMap="BaseResultMap">
         select

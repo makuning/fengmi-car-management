@@ -23,6 +23,15 @@ public class MenuServiceImpl implements MenuService {
     private MenuMapper menuMapper;
 
     /**
+     * 添加菜单
+     * @param menuVo
+     */
+    @Override
+    public void addMenu(MenuVo menuVo) {
+        this.menuMapper.insertSelective(menuVo);
+    }
+
+    /**
      * 查询所有菜单的实现类
      * @param menuVo
      * @return
