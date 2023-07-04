@@ -12,6 +12,12 @@ import java.util.Map;
  */
 public interface CheckService {
     /**
+     * 批量删除检查单
+     * @param ids
+     */
+    void deleteBatchCheck(String[] ids);
+
+    /**
      * 删除检查单
      * @param checkVo
      */
