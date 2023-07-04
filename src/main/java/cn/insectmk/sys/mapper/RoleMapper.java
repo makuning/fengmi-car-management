@@ -11,6 +11,8 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RoleMapper {
+    int updateByPrimaryKeySelective(Role record);
+
     int insertSelective(Role record);
 
     /**

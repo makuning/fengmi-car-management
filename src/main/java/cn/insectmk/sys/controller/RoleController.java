@@ -27,6 +27,20 @@ public class RoleController {
     private RoleService roleService;
 
     /**
+     * 修改角色
+     */
+    @RequestMapping("updateRole")
+    public ResultObj updateRole(RoleVo roleVo) {
+        try {
+            this.roleService.updateRole(roleVo);
+            return ResultObj.UPDATE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
+
+    /**
      * 添加角色
      * @param roleVo
      * @return

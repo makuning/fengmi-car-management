@@ -23,6 +23,15 @@ public class RoleServiceImpl implements RoleService {
     private RoleMapper roleMapper;
 
     /**
+     * 更新角色
+     * @param roleVo
+     */
+    @Override
+    public void updateRole(RoleVo roleVo) {
+        this.roleMapper.updateByPrimaryKeySelective(roleVo);
+    }
+
+    /**
      * 添加角色
      * @param roleVo
      */
