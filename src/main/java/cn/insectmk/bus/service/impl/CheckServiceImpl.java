@@ -1,9 +1,6 @@
 package cn.insectmk.bus.service.impl;
 
-import cn.insectmk.bus.domain.Car;
-import cn.insectmk.bus.domain.Check;
-import cn.insectmk.bus.domain.Customer;
-import cn.insectmk.bus.domain.Rent;
+import cn.insectmk.bus.domain.*;
 import cn.insectmk.bus.mapper.CarMapper;
 import cn.insectmk.bus.mapper.CheckMapper;
 import cn.insectmk.bus.mapper.CustomerMapper;
@@ -29,15 +26,31 @@ import java.util.Map;
 public class CheckServiceImpl implements CheckService {
     @Autowired
     private CheckMapper checkMapper;
-
     @Autowired
     private CustomerMapper customerMapper;
-
     @Autowired
     private RentMapper rentMapper;
-
     @Autowired
     private CarMapper carMapper;
+
+    /**
+     * 保存检查单数据
+     * @param checkVo
+     */
+    @Override
+    public void addCheck(CheckVo checkVo) {
+        this.checkMapper.insertSelective(checkVo);
+        //更改出租单的状态
+        Rent rent = this.rentMapper.selectByPrimaryKey(checkVo.getRentid());
+        //更改为已归还
+        rent.setRentflag(SysConstant.RENT_BACK_TRUE);
+        this.rentMapper.updateByPrimaryKeySelective(rent);
+        //更改汽车的状态
+        Car car = this.carMapper.selectByPrimaryKey(rent.getCarnumber());
+        //更改汽车状态为未出租
+        car.setIsrenting(SysConstant.RENT_CAR_FALSE);
+        this.carMapper.updateByPrimaryKeySelective(car);
+    }
 
     @Override
     public Map<String, Object> initCheckFormData(String rentid) {

@@ -1,5 +1,7 @@
 package cn.insectmk.bus.mapper;
 
+import cn.insectmk.bus.domain.CheckVo;
+
 /**
  * @Description 检查单持久层访问接口
  * @Author makun
@@ -7,4 +9,5 @@ package cn.insectmk.bus.mapper;
  * @Version 1.0
  */
 public interface CheckMapper {
+    void insertSelective(CheckVo checkVo);
 }
