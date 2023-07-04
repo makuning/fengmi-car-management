@@ -1,5 +1,6 @@
 package cn.insectmk.bus.service;
 
+import cn.insectmk.bus.domain.Rent;
 import cn.insectmk.bus.domain.RentVo;
 import cn.insectmk.sys.domain.DataGridView;
 
@@ -10,6 +11,8 @@ import cn.insectmk.sys.domain.DataGridView;
  * @Version 1.0
  */
 public interface RentService {
+
+
     /**
      * 删除出租单
      * @param rentId
@@ -29,4 +32,11 @@ public interface RentService {
     DataGridView queryAllRent(RentVo rentVo);
 
     void addRent(RentVo rentVo);
+
+    /**
+     * 根据出租单号查询出租单信息
+     * @param rentid
+     * @return
+     */
+    Rent queryRentByRentId(String rentid);
 }
