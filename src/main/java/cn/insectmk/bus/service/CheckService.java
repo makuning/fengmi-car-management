@@ -1,6 +1,7 @@
 package cn.insectmk.bus.service;
 
 import cn.insectmk.bus.domain.CheckVo;
+import cn.insectmk.sys.domain.DataGridView;
 
 import java.util.Map;
 
@@ -23,4 +24,10 @@ public interface CheckService {
      * @return
      */
     Map<String,Object> initCheckFormData(String rentid);
+
+    /**
+     * 查询所有检查单
+     * @return
+     */
+    DataGridView queryAllCheck(CheckVo checkVo);
 }

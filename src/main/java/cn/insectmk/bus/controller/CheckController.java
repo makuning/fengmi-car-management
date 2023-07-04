@@ -4,6 +4,7 @@ import cn.insectmk.bus.domain.CheckVo;
 import cn.insectmk.bus.domain.Rent;
 import cn.insectmk.bus.service.CheckService;
 import cn.insectmk.bus.service.RentService;
+import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.utils.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,16 @@ public class CheckController {
     private RentService rentService;
     @Autowired
     private CheckService checkService;
+
+    /**
+     * 查询所有检查单
+     * @param checkVo
+     * @return
+     */
+    @RequestMapping("loadAllCheck")
+    public DataGridView loadAllCheck(CheckVo checkVo){
+        return this.checkService.queryAllCheck(checkVo);
+    }
 
     /**
      * 保存检查单数据

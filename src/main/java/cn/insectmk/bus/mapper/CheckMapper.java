@@ -1,6 +1,9 @@
 package cn.insectmk.bus.mapper;
 
+import cn.insectmk.bus.domain.Check;
 import cn.insectmk.bus.domain.CheckVo;
+
+import java.util.List;
 
 /**
  * @Description 检查单持久层访问接口
@@ -9,5 +12,7 @@ import cn.insectmk.bus.domain.CheckVo;
  * @Version 1.0
  */
 public interface CheckMapper {
+    //查询
+    List<Check> queryAllCheck(Check check);
     void insertSelective(CheckVo checkVo);
 }

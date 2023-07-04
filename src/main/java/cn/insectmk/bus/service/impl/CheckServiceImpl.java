@@ -6,14 +6,18 @@ import cn.insectmk.bus.mapper.CheckMapper;
 import cn.insectmk.bus.mapper.CustomerMapper;
 import cn.insectmk.bus.mapper.RentMapper;
 import cn.insectmk.bus.service.CheckService;
+import cn.insectmk.sys.domain.DataGridView;
 import cn.insectmk.sys.domain.User;
 import cn.insectmk.sys.utils.RandomUtils;
 import cn.insectmk.sys.utils.SysConstant;
 import cn.insectmk.sys.utils.WebUtils;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +36,18 @@ public class CheckServiceImpl implements CheckService {
     private RentMapper rentMapper;
     @Autowired
     private CarMapper carMapper;
+
+    /**
+     * 查询所有检查单
+     * @param checkVo
+     * @return
+     */
+    @Override
+    public DataGridView queryAllCheck(CheckVo checkVo) {
+        Page<Object> page = PageHelper.startPage(checkVo.getPage(), checkVo.getLimit());
+        List<Check> data = this.checkMapper.queryAllCheck(checkVo);
+        return new DataGridView(page.getTotal(),data);
+    }
 
     /**
      * 保存检查单数据

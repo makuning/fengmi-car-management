@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("bus")
 public class BusController {
     /**
+     * 跳转到检查单管理的页面
+     * @return
+     */
+    @RequestMapping("toCheckManager")
+    public String toCheckManager(){
+        return "business/check/checkManager";
+    }
+
+    /**
      * 跳转到汽车入库管理的页面
      * @return
      */
