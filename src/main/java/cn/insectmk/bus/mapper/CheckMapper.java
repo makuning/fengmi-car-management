@@ -12,6 +12,7 @@ import java.util.List;
  * @Version 1.0
  */
 public interface CheckMapper {
+    int updateByPrimaryKeySelective(Check record);
     //查询
     List<Check> queryAllCheck(Check check);
     void insertSelective(CheckVo checkVo);

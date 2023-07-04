@@ -9,7 +9,6 @@ import cn.insectmk.sys.utils.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Date;
 import java.util.Map;
 
@@ -26,6 +25,22 @@ public class CheckController {
     private RentService rentService;
     @Autowired
     private CheckService checkService;
+
+    /**
+     * 更新检查单
+     * @param checkVo
+     * @return
+     */
+    @RequestMapping("updateCheck")
+    public ResultObj updateCheck(CheckVo checkVo){
+        try {
+            this.checkService.updateCheck(checkVo);
+            return ResultObj.UPDATE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
 
     /**
      * 查询所有检查单

@@ -16,6 +16,34 @@
         checkid, checkdate, checkdesc, problem, paymoney, opername, rentid, createtime
     </sql>
 
+    <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.bus.domain.Check">
+        update bus_check
+        <set>
+            <if test="checkdate != null">
+                checkdate = #{checkdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkdesc != null">
+                checkdesc = #{checkdesc,jdbcType=VARCHAR},
+            </if>
+            <if test="problem != null">
+                problem = #{problem,jdbcType=VARCHAR},
+            </if>
+            <if test="paymoney != null">
+                paymoney = #{paymoney,jdbcType=DOUBLE},
+            </if>
+            <if test="opername != null">
+                opername = #{opername,jdbcType=VARCHAR},
+            </if>
+            <if test="rentid != null">
+                rentid = #{rentid,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where checkid = #{checkid,jdbcType=VARCHAR}
+    </update>
+
     <select id="queryAllCheck" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

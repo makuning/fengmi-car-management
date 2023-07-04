@@ -38,6 +38,15 @@ public class CheckServiceImpl implements CheckService {
     private CarMapper carMapper;
 
     /**
+     * 更新检查单
+     * @param checkVo
+     */
+    @Override
+    public void updateCheck(CheckVo checkVo) {
+        this.checkMapper.updateByPrimaryKeySelective(checkVo);
+    }
+
+    /**
      * 查询所有检查单
      * @param checkVo
      * @return
