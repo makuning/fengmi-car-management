@@ -30,6 +30,23 @@ public class RentController {
     private CustomerService customerService;
 
     /**
+     * 删除出租单信息
+     * @param rentVo
+     * @return
+     */
+    @RequestMapping("deleteRent")
+    public ResultObj deleteRent(RentVo rentVo){
+        try {
+            //删除
+            this.rentService.deleteRent(rentVo.getRentid());
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 修改出租单信息
      * @param rentVo
      * @return

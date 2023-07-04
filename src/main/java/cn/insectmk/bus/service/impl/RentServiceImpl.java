@@ -29,6 +29,18 @@ public class RentServiceImpl implements RentService {
     private CarMapper carMapper;
 
     @Override
+    public void deleteRent(String rentId) {
+        //更改汽车状态，将已出租的状态转换成未出租的状态
+        Rent rent = rentMapper.selectByPrimaryKey(rentId);
+        Car car = new Car();
+        car.setCarnumber(rent.getCarnumber());
+        //转换成未出租的状态
+        car.setIsrenting(SysConstant.RENT_CAR_FALSE);
+        carMapper.updateByPrimaryKeySelective(car);
+        this.rentMapper.deleteByPrimaryKey(rentId);
+    }
+
+    @Override
     public void updateRent(RentVo rentVo) {
         this.rentMapper.updateByPrimaryKeySelective(rentVo);
     }

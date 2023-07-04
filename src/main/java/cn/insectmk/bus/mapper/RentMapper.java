@@ -11,10 +11,13 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RentMapper {
+    int deleteByPrimaryKey(String rentid);
     int updateByPrimaryKeySelective(Rent record);
     /**
      * @return 查询
      */
     List<Rent> queryAllRent(Rent rent);
     int insertSelective(Rent record);
+
+    Rent selectByPrimaryKey(String rentId);
 }

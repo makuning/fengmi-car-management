@@ -11,6 +11,12 @@ import cn.insectmk.sys.domain.DataGridView;
  */
 public interface RentService {
     /**
+     * 删除出租单
+     * @param rentId
+     */
+    void deleteRent(String rentId);
+
+    /**
      * 修改出租单
      * @param rentVo
      */
