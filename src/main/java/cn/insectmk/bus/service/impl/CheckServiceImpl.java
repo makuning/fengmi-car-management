@@ -38,6 +38,15 @@ public class CheckServiceImpl implements CheckService {
     private CarMapper carMapper;
 
     /**
+     * 删除检查单
+     * @param checkVo
+     */
+    @Override
+    public void deleteCheck(CheckVo checkVo) {
+        this.checkMapper.deleteByPrimaryKey(checkVo.getCheckid());
+    }
+
+    /**
      * 更新检查单
      * @param checkVo
      */

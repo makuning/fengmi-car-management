@@ -27,6 +27,22 @@ public class CheckController {
     private CheckService checkService;
 
     /**
+     * 删除一个检查单
+     * @param checkVo
+     * @return
+     */
+    @RequestMapping("deleteCheck")
+    public ResultObj deleteCheck(CheckVo checkVo){
+        try{
+            this.checkService.deleteCheck(checkVo);
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 更新检查单
      * @param checkVo
      * @return

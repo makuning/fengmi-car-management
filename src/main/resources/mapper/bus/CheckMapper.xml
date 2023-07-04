@@ -16,6 +16,11 @@
         checkid, checkdate, checkdesc, problem, paymoney, opername, rentid, createtime
     </sql>
 
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from bus_check
+        where checkid = #{checkid,jdbcType=VARCHAR}
+    </delete>
+
     <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.bus.domain.Check">
         update bus_check
         <set>

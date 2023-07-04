@@ -12,6 +12,12 @@ import java.util.Map;
  */
 public interface CheckService {
     /**
+     * 删除检查单
+     * @param checkVo
+     */
+    void deleteCheck(CheckVo checkVo);
+
+    /**
      * 更新检查单
      * @param checkVo
      */

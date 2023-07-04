@@ -12,6 +12,7 @@ import java.util.List;
  * @Version 1.0
  */
 public interface CheckMapper {
+    int deleteByPrimaryKey(String checkid);
     int updateByPrimaryKeySelective(Check record);
     //查询
     List<Check> queryAllCheck(Check check);
