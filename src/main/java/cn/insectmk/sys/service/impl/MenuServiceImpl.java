@@ -23,6 +23,15 @@ public class MenuServiceImpl implements MenuService {
     private MenuMapper menuMapper;
 
     /**
+     * 修改菜单
+     * @param menuVo
+     */
+    @Override
+    public void updateMenu(MenuVo menuVo) {
+        this.menuMapper.updateByPrimaryKeySelective(menuVo);
+    }
+
+    /**
      * 添加菜单
      * @param menuVo
      */

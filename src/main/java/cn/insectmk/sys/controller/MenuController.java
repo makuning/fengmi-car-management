@@ -25,6 +25,24 @@ public class MenuController {
     private MenuService menuService;
 
     /**
+     * 修改菜单
+     * @param menuVo
+     * @return
+     */
+    @RequestMapping("updateMenu")
+    public ResultObj updateMenu(MenuVo menuVo){
+        try {
+            this.menuService.updateMenu(menuVo);
+            //修改成功
+            return ResultObj.UPDATE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            //修改失败
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
+
+    /**
      * 添加菜单
      * @param menuVo
      * @return

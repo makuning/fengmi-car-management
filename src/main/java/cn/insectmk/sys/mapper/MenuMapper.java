@@ -1,6 +1,8 @@
 package cn.insectmk.sys.mapper;
 
 import cn.insectmk.sys.domain.Menu;
+import cn.insectmk.sys.domain.MenuVo;
+
 import java.util.List;
 
 /**
@@ -10,6 +12,8 @@ import java.util.List;
  * @Version 1.0
  */
 public interface MenuMapper {
+    int updateByPrimaryKeySelective(Menu record);
+
     int insertSelective(Menu record);
 
     /**

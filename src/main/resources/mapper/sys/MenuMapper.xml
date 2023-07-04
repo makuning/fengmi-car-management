@@ -16,6 +16,34 @@
         id, pid, title, href, spread, target, icon, available
     </sql>
 
+    <update id="updateByPrimaryKeySelective" parameterType="cn.insectmk.sys.domain.Menu">
+        update sys_menu
+        <set>
+            <if test="pid != null">
+                pid = #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="href != null">
+                href = #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="spread != null">
+                spread = #{spread,jdbcType=INTEGER},
+            </if>
+            <if test="target != null">
+                target = #{target,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="available != null">
+                available = #{available,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
     <insert id="insertSelective" parameterType="cn.insectmk.sys.domain.Menu">
         insert into sys_menu
         <trim prefix="(" suffix=")" suffixOverrides=",">

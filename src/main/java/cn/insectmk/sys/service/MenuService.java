@@ -13,6 +13,11 @@ import java.util.List;
  */
 public interface MenuService {
     /**
+     * 修改菜单
+     **/
+    void updateMenu(MenuVo menuVo);
+
+    /**
      * 添加菜单
      **/
     void addMenu(MenuVo menuVo);
