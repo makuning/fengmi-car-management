@@ -27,6 +27,14 @@ public class RoleController {
     private RoleService roleService;
 
     /**
+     * 加载角色管理分配菜单的json
+     */
+    @RequestMapping("initRoleMenuTreeJson")
+    public DataGridView initRoleMenuTreeJson(Integer roleid) {
+        return this.roleService.initRoleMenuTreeJson(roleid);
+    }
+
+    /**
      * 批量删除角色
      * @param roleVo
      * @return

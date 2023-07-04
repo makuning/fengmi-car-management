@@ -11,6 +11,13 @@ import cn.insectmk.sys.domain.RoleVo;
  */
 public interface RoleService {
     /**
+     * 加载角色管理分配菜单的json
+     * @param roleid
+     * @return
+     */
+    DataGridView initRoleMenuTreeJson(Integer roleid);
+
+    /**
      * 批量删除角色
      * @param ids
      */

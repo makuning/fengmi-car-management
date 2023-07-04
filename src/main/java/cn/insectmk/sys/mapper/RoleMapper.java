@@ -1,6 +1,8 @@
 package cn.insectmk.sys.mapper;
 
+import cn.insectmk.sys.domain.Menu;
 import cn.insectmk.sys.domain.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RoleMapper {
+
     int deleteByPrimaryKey(Integer roleid);
 
     /**

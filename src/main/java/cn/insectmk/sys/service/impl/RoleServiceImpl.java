@@ -1,14 +1,16 @@
 package cn.insectmk.sys.service.impl;
 
-import cn.insectmk.sys.domain.DataGridView;
-import cn.insectmk.sys.domain.Role;
-import cn.insectmk.sys.domain.RoleVo;
+import cn.insectmk.sys.domain.*;
+import cn.insectmk.sys.mapper.MenuMapper;
 import cn.insectmk.sys.mapper.RoleMapper;
 import cn.insectmk.sys.service.RoleService;
+import cn.insectmk.sys.utils.SysConstant;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +23,36 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleMapper roleMapper;
+    @Autowired
+    private MenuMapper menuMapper;
+
+    @Override
+    public DataGridView initRoleMenuTreeJson(Integer roleid) {
+        //查询所有的可用的菜单
+        Menu menu = new Menu();
+        menu.setAvailable(SysConstant.AVAILABLE_TRUE);
+        List<Menu> allMenu = menuMapper.queryAllMenu(menu);
+        //根据角色ID查询当前角色拥有的菜单
+        List<Menu> roleMenu = menuMapper.queryMenuByRoleId(SysConstant.AVAILABLE_TRUE,roleid);
+
+        List<TreeNode> data = new ArrayList<>();
+        for (Menu m1 : allMenu) {
+            String checkArr = SysConstant.CODE_ZERO+"";
+            for (Menu m2 : roleMenu) {
+                if (m1.getId()==m2.getId()){
+                    checkArr=SysConstant.CODE_ONE+"";
+                    break;
+                }
+            }
+            Integer id = m1.getId();
+            Integer pid = m1.getPid();
+            String title = m1.getTitle();
+            Boolean spread = m1.getSpread()==SysConstant.SPREAD_TRUE?true:false;
+            data.add(new TreeNode(id,pid,title,spread,checkArr));
+        }
+
+        return new DataGridView(data);
+    }
 
     /**
      * 根据前台页面传来的数组批量删除角色
