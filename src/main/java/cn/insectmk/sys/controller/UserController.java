@@ -21,8 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private RoleService roleService;
+
+    /**
+     * 重置密码
+     * @param userVo
+     * @return
+     */
+    @RequestMapping("resetUserPwd")
+    public ResultObj resetUserPwd(UserVo userVo){
+        try {
+            this.userService.resetUserPwd(userVo.getUserid());
+            return ResultObj.RESET_SUCCESS;
+        }catch (Exception e){
+            return ResultObj.RESET_ERROR;
+        }
+    }
 
     /**
      * 批量删除用户

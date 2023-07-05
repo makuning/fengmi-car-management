@@ -12,6 +12,12 @@ import cn.insectmk.sys.domain.UserVo;
  */
 public interface UserService {
     /**
+     * 重置密码
+     * @param userid
+     */
+    void resetUserPwd(Integer userid);
+
+    /**
      * 批量删除用户
      * @param ids
      */

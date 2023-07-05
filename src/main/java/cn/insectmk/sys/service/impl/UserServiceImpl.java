@@ -12,7 +12,6 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-
 import java.util.List;
 
 /**
@@ -27,6 +26,20 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private RoleMapper roleMapper;
+
+    /**
+     * 重置用户的密码
+     * @param userid
+     */
+    @Override
+    public void resetUserPwd(Integer userid) {
+        User user = new User();
+        user.setUserid(userid);
+        //设置默认密码
+        user.setPwd(DigestUtils.md5DigestAsHex(SysConstant.USER_DEFAULT_PWD.getBytes()));
+        //设置完成后更新
+        this.userMapper.updateByPrimaryKeySelective(user);
+    }
 
     /**
      * 批量删除
