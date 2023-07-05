@@ -19,6 +19,16 @@ public class StatServiceImpl implements StatService {
     private StatMapper statMapper;
 
     /**
+     * 查询业务员年度销售额统计数据
+     * @param year
+     * @return
+     */
+    @Override
+    public List<BaseEntity> loadOpernameYearGradeStatList(String year) {
+        return this.statMapper.queryOpernameYearGradeStat(year);
+    }
+
+    /**
      * 查询公司年度月份销售额数据
      * @param year
      * @return

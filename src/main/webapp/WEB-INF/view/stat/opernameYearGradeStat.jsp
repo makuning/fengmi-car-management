@@ -97,7 +97,7 @@
                     series: [
                         {
                             name:'销售额',
-                            data: data,
+                            data: data.value,
                             type: 'bar',
                             showBackground: true,
                             backgroundStyle: {

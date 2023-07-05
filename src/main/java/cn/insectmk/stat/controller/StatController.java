@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 统计分析模块控制器
@@ -37,6 +40,31 @@ public class StatController {
     private StatService statService;
 
     /**
+     * 加载公司年度业务统计数据
+     * @return
+     */
+    @RequestMapping("loadCompanyYearGradeStatJson")
+    @ResponseBody
+    public List<Double> loadCompanyYearGradeStatJson(String year){
+        List<Double> entities = this.statService.loadCompanyYearGradeStatList(year);
+        for (int i = 0; i < entities.size(); i++) {
+            if (null==entities.get(i)){
+                entities.set(i,0.0);
+            }
+        }
+        return entities;
+    }
+
+    /**
+     * 跳转到公司年度业务统计
+     * @return
+     */
+    @RequestMapping("toCompanyYearGradeStat")
+    public String toCompanyYearGradeStat(){
+        return "stat/companyYearGradeStat";
+    }
+
+    /**
      * 跳转到业务员年度销售额
      * @return
      */
@@ -46,19 +74,23 @@ public class StatController {
     }
 
     /**
-     * 加载公司年度业务统计数据
+     * 加载业务员年度业务统计数据
      * @return
      */
     @RequestMapping("loadOpernameYearGradeStatJson")
     @ResponseBody
-    public List<Double> loadOpernameYearGradeStatJson(String year){
-        List<Double> entities = this.statService.loadCompanyYearGradeStatList(year);
-        for (int i = 0; i < entities.size(); i++) {
-            if (null==entities.get(i)){
-                entities.set(i,0.0);
-            }
+    public Map<String,Object> loadOpernameYearGradeStatJson(String year){
+        List<BaseEntity> entities = this.statService.loadOpernameYearGradeStatList(year);
+        Map<String,Object> map = new HashMap<String, Object>();
+        List<String> names = new ArrayList<String>();
+        List<Double> values = new ArrayList<Double>();
+        for (BaseEntity baseEntity : entities) {
+            names.add(baseEntity.getName());
+            values.add(baseEntity.getValue());
         }
-        return entities;
+        map.put("name",names);
+        map.put("value",values);
+        return map;
     }
 
     /**

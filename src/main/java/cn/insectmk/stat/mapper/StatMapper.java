@@ -12,6 +12,13 @@ import java.util.List;
  */
 public interface StatMapper {
     /**
+     * 查询业务员年度业绩
+     * @param year
+     * @return
+     */
+    List<BaseEntity> queryOpernameYearGradeStat(String year);
+
+    /**
      * 查询公司年度业务销售额数据
      * @param year
      * @return

@@ -11,6 +11,12 @@ import java.util.List;
  */
 public interface StatService {
     /**
+     * 业务员年度销售额数据
+     * @return
+     */
+    List<BaseEntity> loadOpernameYearGradeStatList(String year);
+
+    /**
      * 公司年度月份销售数据
      * @param year
      * @return

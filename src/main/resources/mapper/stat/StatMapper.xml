@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.insectmk.stat.mapper.StatMapper">
+    <!--查询业务员年度业绩-->
+    <select id="queryOpernameYearGradeStat" resultType="cn.insectmk.stat.domain.BaseEntity">
+        select opername as name,sum(price) as value from bus_rent
+        where  DATE_FORMAT(createtime,"%Y")=#{value} GROUP BY opername
+    </select>
+
     <!--查询公司年度业绩-->
     <select id="queryCompanyYearGradeStat" resultType="java.lang.Double">
         select sum(price) from bus_rent where
