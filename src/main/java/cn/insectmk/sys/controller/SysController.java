@@ -17,6 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("sys")
 public class SysController {
     /**
+     * 跳转到日志管理页面
+     * @return
+     */
+    @RequestMapping("toLogInfoManager")
+    public String toLogInfoManager() {
+        return "system/logInfo/logInfoManager";
+    }
+
+    /**
      * 跳转到用户管理页面
      * @return
      */
