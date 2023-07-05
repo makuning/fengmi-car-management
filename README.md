@@ -77,3 +77,11 @@ jdbc.jdbcUrl=jdbc:mysql://127.0.0.1/qf_car_rental?useUnicode=true&characterEncod
 jdbc.user=qf_car_rental	# 数据库用户名
 jdbc.password=mk123456	# 用户密码
 ```
+
+更改图片上传路径`"fengmi-car-management\src\main\resources\file.properties"`
+
+```properties
+path=D:/Hub/fengmi-car-management/upload/	# 更改为你本机的目录
+```
+
+以上步骤都完成后，在IDEA启动Tomcat即可运行
