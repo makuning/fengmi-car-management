@@ -1,7 +1,6 @@
 package cn.insectmk.stat.service;
 
 import cn.insectmk.stat.domain.BaseEntity;
-
 import java.util.List;
 
 /**
@@ -11,6 +10,12 @@ import java.util.List;
  * @Version 1.0
  */
 public interface StatService {
+    /**
+     * 公司年度月份销售数据
+     * @param year
+     * @return
+     */
+    List<Double> loadCompanyYearGradeStatList(String year);
 
     /**
      * 查询客户地区数据

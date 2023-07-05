@@ -37,6 +37,31 @@ public class StatController {
     private StatService statService;
 
     /**
+     * 跳转到业务员年度销售额
+     * @return
+     */
+    @RequestMapping("toOpernameYearGradeStat")
+    public String toOpernameYearGradeStat() {
+        return "stat/opernameYearGradeStat";
+    }
+
+    /**
+     * 加载公司年度业务统计数据
+     * @return
+     */
+    @RequestMapping("loadOpernameYearGradeStatJson")
+    @ResponseBody
+    public List<Double> loadOpernameYearGradeStatJson(String year){
+        List<Double> entities = this.statService.loadCompanyYearGradeStatList(year);
+        for (int i = 0; i < entities.size(); i++) {
+            if (null==entities.get(i)){
+                entities.set(i,0.0);
+            }
+        }
+        return entities;
+    }
+
+    /**
      * 加载客户地区数据
      * @return
      */
