@@ -30,4 +30,6 @@ public class LogInfoVo extends LogInfo {
     private Date startTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endTime;
+    //接受多个id
+    private Integer [] ids;
 }

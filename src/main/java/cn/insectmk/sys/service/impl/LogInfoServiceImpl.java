@@ -23,6 +23,17 @@ public class LogInfoServiceImpl implements LogInfoService {
     private LogInfoMapper logInfoMapper;
 
     /**
+     * 批量删除
+     * @param ids
+     */
+    @Override
+    public void deleteBatchLogInfo(Integer[] ids) {
+        for (Integer id:ids) {
+            deleteLogInfo(id);
+        }
+    }
+
+    /**
      * 删除日志
      * @param logInfoid
      */

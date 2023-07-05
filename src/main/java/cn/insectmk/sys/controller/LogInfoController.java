@@ -21,6 +21,22 @@ public class LogInfoController {
     private LogInfoService logInfoService;
 
     /**
+     * 批量删除日志
+     * @param logInfoVo
+     * @return
+     */
+    @RequestMapping("deleteBatchLogInfo")
+    public ResultObj deleteBatchLogInfo(LogInfoVo logInfoVo){
+        try {
+            this.logInfoService.deleteBatchLogInfo(logInfoVo.getIds());
+            return ResultObj.DELETE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    /**
      * 删除一条日志
      * @param id
      * @return

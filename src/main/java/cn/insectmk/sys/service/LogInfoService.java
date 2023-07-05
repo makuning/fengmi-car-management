@@ -11,6 +11,12 @@ import cn.insectmk.sys.domain.LogInfoVo;
  */
 public interface LogInfoService {
     /**
+     * 批量删除日志
+     * @param ids
+     */
+    public void deleteBatchLogInfo(Integer[] ids);
+
+    /**
      * 根据id删除日志
      * @param logInfoid
      */
