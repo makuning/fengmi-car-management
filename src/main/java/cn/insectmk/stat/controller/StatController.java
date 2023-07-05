@@ -1,16 +1,11 @@
 package cn.insectmk.stat.controller;
 
-/**
- * @Description 基础功能控制器
- * @Author makun
- * @Date 2023/7/4 14:52
- * @Version 1.0
- */
-
 import cn.insectmk.bus.domain.Customer;
 import cn.insectmk.bus.domain.Rent;
 import cn.insectmk.bus.service.CustomerService;
 import cn.insectmk.bus.service.RentService;
+import cn.insectmk.stat.domain.BaseEntity;
+import cn.insectmk.stat.service.StatService;
 import cn.insectmk.sys.utils.ExportRentUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -19,23 +14,45 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 /**
- * 统计分析
+ * @Description 统计分析模块控制器
+ * @Author makun
+ * @Date 2023/7/4 14:52
+ * @Version 1.0
  */
 @RequestMapping("stat")
 @Controller
 public class StatController {
-
     @Autowired
     private CustomerService customerService;
-
     @Autowired
     private RentService rentService;
+    @Autowired
+    private StatService statService;
 
+    /**
+     * 加载客户地区数据
+     * @return
+     */
+    @RequestMapping("loadCustomerAreaStatJson")
+    @ResponseBody
+    public List<BaseEntity> loadCustomerAreaStatJson(){
+        return this.statService.loadCustomerAreaStatList();
+    }
+
+    /**
+     * 跳转到客户地区统计页面
+     */
+    @RequestMapping("toCustomerAreaStat")
+    public String toCustomerAreaStat(){
+        return "stat/customerAreaStat";
+    }
 
     /**
      * 导出出租单数据
