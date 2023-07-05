@@ -23,6 +23,16 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 加载用户管理的分配角色的数据
+     * @param userVo
+     * @return
+     */
+    @RequestMapping("initUserRole")
+    public DataGridView initUserRole(UserVo userVo){
+        return this.userService.queryUserRole(userVo.getUserid());
+    }
+
+    /**
      * 重置密码
      * @param userVo
      * @return

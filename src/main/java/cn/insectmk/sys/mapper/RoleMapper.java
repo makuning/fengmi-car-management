@@ -13,6 +13,8 @@ import java.util.List;
  * @Version 1.0
  */
 public interface RoleMapper {
+    List<Role> queryRoleByUid(@Param("available") Integer availableTrue, @Param("uid") Integer userid);
+
     /**
      * 根据用户id删除sys_role_user里面的数据
      * @param userid

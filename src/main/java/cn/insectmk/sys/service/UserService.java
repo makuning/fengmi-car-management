@@ -12,6 +12,13 @@ import cn.insectmk.sys.domain.UserVo;
  */
 public interface UserService {
     /**
+     * 加载用户管理分配角色的数据
+     * @param userid
+     * @return
+     */
+    DataGridView queryUserRole(Integer userid);
+
+    /**
      * 重置密码
      * @param userid
      */

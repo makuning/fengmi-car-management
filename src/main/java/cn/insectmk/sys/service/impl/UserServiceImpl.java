@@ -1,6 +1,7 @@
 package cn.insectmk.sys.service.impl;
 
 import cn.insectmk.sys.domain.DataGridView;
+import cn.insectmk.sys.domain.Role;
 import cn.insectmk.sys.domain.User;
 import cn.insectmk.sys.domain.UserVo;
 import cn.insectmk.sys.mapper.RoleMapper;
@@ -12,7 +13,11 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 业务层实现类
@@ -26,6 +31,41 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private RoleMapper roleMapper;
+
+    /**
+     * 加载用户管理的分配角色的数据
+     * @param userid
+     * @return
+     */
+    @Override
+    public DataGridView queryUserRole(Integer userid) {
+        //1.查询所有可用的角色
+        Role role = new Role();
+        role.setAvailable(SysConstant.AVAILABLE_TRUE);
+        List<Role> allRole = this.roleMapper.queryAllRole(role);
+        //2.根据用户ID查询已拥有的角色
+        List<Role> userRole=this.roleMapper.queryRoleByUid(SysConstant.AVAILABLE_TRUE,userid);
+
+        List<Map<String,Object>> data = new ArrayList<>();
+
+        for (Role r1 : allRole){
+            Boolean LAY_CHECKED=false;
+            for (Role r2 : userRole) {
+                if (r1.getRoleid()==r2.getRoleid()){
+                    LAY_CHECKED=true;
+                }
+            }
+            Map<String,Object> map=new HashMap<String,Object>();
+            map.put("roleid",r1.getRoleid());
+            map.put("rolename",r1.getRolename());
+            map.put("roledesc",r1.getRoledesc());
+            map.put("LAY_CHECKED",LAY_CHECKED);
+            data.add(map);
+
+        }
+
+        return new DataGridView(data);
+    }
 
     /**
      * 重置用户的密码

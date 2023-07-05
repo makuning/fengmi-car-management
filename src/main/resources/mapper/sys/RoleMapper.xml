@@ -12,6 +12,12 @@
         roleid, rolename, roledesc, available
     </sql>
 
+    <!--  根据用户id查找角色列表  -->
+    <select id="queryRoleByUid" resultMap="BaseResultMap">
+        select t1.* from sys_role t1 inner join sys_role_user t2 on(t1.roleid = t2.rid)
+        where t2.uid = #{uid} and t1.available = #{available}
+    </select>
+
     <!--根据用户id删除sys_role_user里面的数据 deleteRoleUserByUid-->
     <delete id="deleteRoleUserByUid">
         delete from sys_role_user where uid=#{value}
