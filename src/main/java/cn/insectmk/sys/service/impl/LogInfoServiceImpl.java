@@ -19,9 +19,17 @@ import java.util.List;
  */
 @Service
 public class LogInfoServiceImpl implements LogInfoService {
-
     @Autowired
     private LogInfoMapper logInfoMapper;
+
+    /**
+     * 删除日志
+     * @param logInfoid
+     */
+    @Override
+    public void deleteLogInfo(Integer logInfoid) {
+        this.logInfoMapper.deleteByPrimaryKey(logInfoid);
+    }
 
     /**
      * 查询所有日志

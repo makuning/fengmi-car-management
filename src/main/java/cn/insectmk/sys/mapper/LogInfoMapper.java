@@ -11,6 +11,8 @@ import java.util.List;
  * @Version 1.0
  */
 public interface LogInfoMapper {
+    int deleteByPrimaryKey(Integer id);
+
     /**
      * 查询日志
      * @param logInfo

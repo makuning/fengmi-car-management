@@ -10,6 +10,12 @@ import cn.insectmk.sys.domain.LogInfoVo;
  * @Version 1.0
  */
 public interface LogInfoService {
+    /**
+     * 根据id删除日志
+     * @param logInfoid
+     */
+    public void deleteLogInfo(Integer logInfoid);
+
 
     /**
      * 查询所有日志

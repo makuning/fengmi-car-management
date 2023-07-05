@@ -12,6 +12,11 @@
         id, loginname, loginip, logintime
     </sql>
 
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_log_login
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
     <!--查询日志-->
     <select id="queryAllLogInfo" resultMap="BaseResultMap">
         select
