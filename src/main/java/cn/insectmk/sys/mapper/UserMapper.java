@@ -1,6 +1,8 @@
 package cn.insectmk.sys.mapper;
 
+import cn.insectmk.sys.domain.Role;
 import cn.insectmk.sys.domain.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,6 +13,15 @@ import java.util.List;
  * @Version 1.0
  */
 public interface UserMapper {
+    List<Role> queryRolesByPrimaryKey(Integer userid);
+
+    /**
+     * 保存用户和角色的关系
+     * @param userid
+     * @param rid
+     */
+    void insertUserRole(@Param("uid") Integer userid, @Param("rid") Integer rid);
+
     int deleteByPrimaryKey(Integer userid);
 
     int updateByPrimaryKeySelective(User record);
@@ -22,4 +33,6 @@ public interface UserMapper {
      *登录
      * */
     User login(User user);
+
+    User queryByPrimaryKey(Integer userid);
 }

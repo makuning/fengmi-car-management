@@ -134,7 +134,7 @@ public class MenuController {
             list = menuService.queryAllMenuForList(menuVo);
         } else {
             //TODO 用户如果不是管理员,展示的菜单是不同的,添加权限的时候补充
-            //list = menuService.queryMenuByUserIdForList(menuVo, user.getUserid());
+            list = menuService.queryMenuByUserIdForList(menuVo, user.getUserid());
         }
         List<TreeNode> nodes = new ArrayList<>();
         //把list里的数据方到nodes

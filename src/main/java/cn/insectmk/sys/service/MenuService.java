@@ -47,4 +47,6 @@ public interface MenuService {
      * @return
      */
     List<Menu> queryAllMenuForList(MenuVo menuVo);
+
+    List<Menu> queryMenuByUserIdForList(MenuVo menuVo, Integer userid);
 }

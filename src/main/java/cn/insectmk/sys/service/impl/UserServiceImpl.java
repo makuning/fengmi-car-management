@@ -33,6 +33,24 @@ public class UserServiceImpl implements UserService {
     private RoleMapper roleMapper;
 
     /**
+     * 保存用户和角色的关系
+     * @param userVo
+     */
+    @Override
+    public void saveUserRole(UserVo userVo) {
+        Integer userid = userVo.getUserid();
+        Integer[] roleIds = userVo.getIds();
+        //根据用户id删除sys_role_user里面的数据
+        this.roleMapper.deleteRoleUserByUid(userid);
+        //保存关系
+        if (roleIds!=null&&roleIds.length>0){
+            for (Integer rid : roleIds){
+                this.userMapper.insertUserRole(userid,rid);
+            }
+        }
+    }
+
+    /**
      * 加载用户管理的分配角色的数据
      * @param userid
      * @return

@@ -1,15 +1,19 @@
 package cn.insectmk.sys.service.impl;
 
-import cn.insectmk.sys.domain.DataGridView;
-import cn.insectmk.sys.domain.Menu;
-import cn.insectmk.sys.domain.MenuVo;
+import cn.insectmk.sys.domain.*;
 import cn.insectmk.sys.mapper.MenuMapper;
+import cn.insectmk.sys.mapper.RoleMapper;
+import cn.insectmk.sys.mapper.UserMapper;
 import cn.insectmk.sys.service.MenuService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Description 菜单服务接口实现类
@@ -21,6 +25,10 @@ import java.util.List;
 public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuMapper menuMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private RoleMapper roleMapper;
 
     /**
      * 删除菜单
@@ -77,5 +85,17 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<Menu> queryAllMenuForList(MenuVo menuVo) {
         return menuMapper.queryAllMenu(menuVo);
+    }
+
+    @Override
+    public List<Menu> queryMenuByUserIdForList(MenuVo menuVo, Integer userid) {
+        List<Role> roles = userMapper.queryRolesByPrimaryKey(userid);
+        List<Menu> menus = null;
+        Set<Menu> finalMenu = new HashSet<>();
+        for (Role role : roles) {
+            menus = menuMapper.queryMenuByRoleId(role.getAvailable(), role.getRoleid());
+            finalMenu.addAll(menus);
+        }
+        return new ArrayList<>(finalMenu);
     }
 }

@@ -23,6 +23,22 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 保存用户和角色的关系
+     * @param userVo
+     * @return
+     */
+    @RequestMapping("saveUserRole")
+    public ResultObj saveUserRole(UserVo userVo){
+        try {
+            this.userService.saveUserRole(userVo);
+            return ResultObj.DISPATCH_SUCCESS;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultObj.DISPATCH_ERROR;
+        }
+    }
+
+    /**
      * 加载用户管理的分配角色的数据
      * @param userVo
      * @return
