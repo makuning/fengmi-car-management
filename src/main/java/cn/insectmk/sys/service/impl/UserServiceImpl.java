@@ -29,6 +29,17 @@ public class UserServiceImpl implements UserService {
     private RoleMapper roleMapper;
 
     /**
+     * 批量删除
+     * @param ids
+     */
+    @Override
+    public void deleteBatchUser(Integer[] ids) {
+        for (Integer uid:ids) {
+            this.deleteUser(uid);
+        }
+    }
+
+    /**
      * 删除用户
      * @param userid
      */

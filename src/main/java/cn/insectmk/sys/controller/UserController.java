@@ -1,7 +1,9 @@
 package cn.insectmk.sys.controller;
 
 import cn.insectmk.sys.domain.DataGridView;
+import cn.insectmk.sys.domain.RoleVo;
 import cn.insectmk.sys.domain.UserVo;
+import cn.insectmk.sys.service.RoleService;
 import cn.insectmk.sys.service.UserService;
 import cn.insectmk.sys.utils.ResultObj;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
+
+    /**
+     * 批量删除用户
+     * @param userVo
+     * @return
+     */
+    @RequestMapping("deleteBatchUser")
+    public ResultObj deleteBatchUser(UserVo userVo){
+        try {
+            this.userService.deleteBatchUser(userVo.getIds());
+            return ResultObj.DELETE_SUCCESS;
+        }catch (Exception e){
+            return ResultObj.DELETE_ERROR;
+        }
+    }
 
     /**
      * 删除用户
